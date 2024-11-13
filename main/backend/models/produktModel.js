@@ -1,9 +1,8 @@
-// backend/models/produktModel.js
 const mongoose = require('mongoose');
 
 const produktSchema = new mongoose.Schema({
     nazwa: { type: String, required: true },
-    kategoria: { type: String, required: true }, // Dania główne, desery, napoje
+    kategoria: { type: String, required: true },
     cena: { type: Number, required: true },
 });
 

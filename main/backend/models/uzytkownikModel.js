@@ -1,4 +1,3 @@
-// backend/models/uzytkownikModel.js
 const mongoose = require('mongoose');
 
 const uzytkownikSchema = new mongoose.Schema({

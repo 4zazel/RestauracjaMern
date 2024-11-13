@@ -1,12 +1,9 @@
-// backend/seed.js
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Produkt = require('./models/produktModel');
 
-// Wczytaj zmienne środowiskowe
 dotenv.config();
 
-// Połączenie z MongoDB
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -24,8 +21,8 @@ const seedProdukty = async () => {
         { nazwa: 'Sok pomarańczowy', kategoria: 'Napoje', cena: 8 },
     ];
 
-    await Produkt.deleteMany({}); // Usuwa istniejące dane
-    await Produkt.insertMany(produkty); // Dodaje nowe dane
+    await Produkt.deleteMany({});
+    await Produkt.insertMany(produkty);
     console.log("Dane zostały załadowane");
     mongoose.connection.close();
 };

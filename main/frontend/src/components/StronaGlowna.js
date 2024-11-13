@@ -1,4 +1,3 @@
-// frontend/src/components/StronaGlowna.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -27,13 +26,10 @@ const StronaGlowna = () => {
 
     const zamow = async () => {
         try {
-            // Send the cart data to the backend
             const response = await axios.post('http://localhost:5000/api/zamowienie', { produkty: koszyk });
 
-            // Handle the success response from the backend
             alert(response.data.message || "Zamówienie złożone pomyślnie!");
 
-            // Clear the cart after the order is placed
             setKoszyk([]);
         } catch (error) {
             console.error("Błąd podczas składania zamówienia:", error);

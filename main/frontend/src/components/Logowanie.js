@@ -1,4 +1,3 @@
-// frontend/src/components/Logowanie.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -11,7 +10,6 @@ const Logowanie = () => {
         try {
             const response = await axios.post('http://localhost:5000/api/logowanie', { email, haslo });
             alert(response.data);
-            // Przenieś użytkownika do Strony Głównej
             window.location.href = '/stronaglowna';
         } catch (error) {
             alert(error.response.data);

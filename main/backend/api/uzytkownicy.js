@@ -1,9 +1,7 @@
-// backend/api/uzytkownicy.js
 const express = require('express');
 const router = express.Router();
 const Uzytkownik = require('../models/uzytkownikModel');
 
-// Endpoint do rejestracji
 router.post('/rejestracja', async (req, res) => {
     const { email, haslo } = req.body;
     const nowyUzytkownik = new Uzytkownik({ email, haslo });
@@ -11,7 +9,6 @@ router.post('/rejestracja', async (req, res) => {
     res.status(201).send("Użytkownik zarejestrowany");
 });
 
-// Endpoint do logowania
 router.post('/logowanie', async (req, res) => {
     const { email, haslo } = req.body;
     const uzytkownik = await Uzytkownik.findOne({ email });

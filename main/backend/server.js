@@ -10,14 +10,12 @@ const app = express();
 app.use(cors());    
 app.use(express.json());
 
-// Połączenie z MongoDB
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
-// Endpoint do rejestracji
 app.post('/api/rejestracja', async (req, res) => {
     const { email, haslo } = req.body;
     const nowyUzytkownik = new Uzytkownik({ email, haslo });
@@ -25,7 +23,6 @@ app.post('/api/rejestracja', async (req, res) => {
     res.status(201).send("Użytkownik zarejestrowany");
 });
 
-// Endpoint do logowania
 app.post('/api/logowanie', async (req, res) => {
     const { email, haslo } = req.body;
     const uzytkownik = await Uzytkownik.findOne({ email });
@@ -36,7 +33,6 @@ app.post('/api/logowanie', async (req, res) => {
     }
 });
 
-// Endpoint do pobierania produktów
 app.get('/api/produkty', async (req, res) => {
     try {
         const produkty = await Produkt.find();
@@ -46,6 +42,5 @@ app.get('/api/produkty', async (req, res) => {
     }
 });
 
-// Nasłuchuj na porcie
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serwer działa na porcie ${PORT}`));

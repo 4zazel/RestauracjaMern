@@ -1,4 +1,3 @@
-// frontend/src/components/Rejestracja.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -11,7 +10,6 @@ const Rejestracja = () => {
         try {
             const response = await axios.post('http://localhost:5000/api/rejestracja', { email, haslo });
             alert(response.data);
-            // Przenieś użytkownika do Logowania
             window.location.href = '/';
         } catch (error) {
             alert(error.response.data);
