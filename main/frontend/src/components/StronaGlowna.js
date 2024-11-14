@@ -8,6 +8,7 @@ const StronaGlowna = () => {
         { nazwa: 'Sok pomarańczowy', kategoria: 'Napoje', cena: 8, zdj: ''}]);
     const [koszyk, setKoszyk] = useState([]);
 
+
     useEffect(() => {
         const fetchProdukty = async () => {
             try {
@@ -26,23 +27,22 @@ const StronaGlowna = () => {
 
     const zamow = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/zamowienie', { produkty: koszyk });
-
-            alert(response.data.message || "Zamówienie złożone pomyślnie!");
-
+            alert("Zamówienie złożone pomyślnie!");
             setKoszyk([]);
         } catch (error) {
             console.error("Błąd podczas składania zamówienia:", error);
-            alert("Wystąpił błąd podczas składania zamówienia. Spróbuj ponownie.");
         }
     };
   
     return (
         <div className="container bg-dark" style={{ padding: '20px' }}>
-            <h2 className="text-center mb-4 bg-dark text-white">Strona Główna</h2>
-            
+            <h2 className="text-center mb-4 bg-dark text-white">Pizzeria Pod Mostem</h2>
+            <h4 className="text-center mb-4 bg-dark text-success">Zapraszamy!</h4>
+
             <div className="mb-4 bg-dark">
-                <h3 className="text-info">Produkty</h3>
+                <h3 className="text-info">Produkty</h3>     
+                <a href='/logowanie' className='btn btn-success'>Zaloguj się</a>
+                <a href='/rejestracja' className='btn btn-info'>Zarejestruj się</a>
                 <table className="table table-striped table-hover table-dark">
                     <thead className="thead-dark bg-dark">
                         <tr>

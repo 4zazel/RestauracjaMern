@@ -5,12 +5,13 @@ const Logowanie = () => {
     const [email, setEmail] = useState('');
     const [haslo, setHaslo] = useState('');
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5000/api/logowanie', { email, haslo });
             alert(response.data);
-            window.location.href = '/stronaglowna';
+            window.location.href = '/';
         } catch (error) {
             alert(error.response.data);
         }
